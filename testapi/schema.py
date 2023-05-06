@@ -14,6 +14,16 @@ class ContentInCategorySchema(Schema):
     category_id : int
 
 class CategorySchema(ModelSchema):
+    content : List[ContentsSchema]
     class Config:
         model = Category
-        model_fields = ['id','title','description','created_at','content']
+        model_fields = ['title','description','id','created_at','content']
+
+
+class CreateCategory(Schema):
+    title: str
+    description: str
+
+class CreateContent(Schema):
+    content_name: str
+    description: str
